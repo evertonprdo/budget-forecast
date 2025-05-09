@@ -1,10 +1,10 @@
 use std::{
     fs,
-    io::{BufRead, BufReader, Write},
+    io::{BufRead, BufReader, Read, Write},
     net::{TcpListener, TcpStream},
 };
 
-use budget_forecast::ThreadPool;
+use budget_forecast::{Forecast, ThreadPool};
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
@@ -20,20 +20,45 @@ fn main() {
 }
 
 fn handle_connection(stream: TcpStream) {
-    let buf_reader = BufReader::new(&stream);
-    let request_line = buf_reader.lines().next().unwrap().unwrap();
+    let mut buf_reader = BufReader::new(&stream);
+
+    let mut headers = Vec::new();
+    let mut content_length = 0;
+
+    let mut request_line = String::new();
+    buf_reader.read_line(&mut request_line).unwrap();
+
+    // <!-- AI
+    loop {
+        let mut line = String::new();
+        buf_reader.read_line(&mut line).unwrap();
+        let trimmed = line.trim_end();
+
+        if trimmed.is_empty() {
+            break;
+        }
+
+        if let Some(cl) = trimmed.strip_prefix("Content-Length: ") {
+            content_length = cl.trim().parse::<usize>().unwrap_or(0);
+        }
+
+        headers.push(trimmed.to_string());
+    }
+
+    let mut body = vec![0u8; content_length];
+    buf_reader.read_exact(&mut body).unwrap();
+    // AI -->
 
     let (method, path) = extract_route(&request_line[..]);
 
-    let handler = match (method, path) {
-        ("GET", "/") => Routes::index,
-        ("GET", "/styles.css") => Routes::styles,
-        ("GET", "/scripts.js") => Routes::script,
-        ("GET", "/favicon.ico") => Routes::favicon,
-        _ => Routes::not_found,
+    match (method, path) {
+        ("GET", "/") => Routes::index(stream),
+        ("GET", "/styles.css") => Routes::styles(stream),
+        ("GET", "/scripts.js") => Routes::script(stream),
+        ("GET", "/favicon.ico") => Routes::favicon(stream),
+        ("POST", "/api/forecast") => Routes::forecast(stream, body),
+        _ => Routes::not_found(stream),
     };
-
-    handler(stream);
 }
 
 const OK_200: &str = "HTTP/1.1 200 OK";
@@ -86,6 +111,16 @@ impl Routes {
 
         stream.write_all(response.as_bytes()).unwrap();
         stream.write_all(&contents).unwrap();
+    }
+
+    fn forecast(mut stream: TcpStream, body: Vec<u8>) {
+        let forecast = Forecast::from(&body);
+        let content = forecast.response();
+
+        let response = Self::header(OK_200, "application/json", content.len());
+
+        stream.write_all(response.as_bytes()).unwrap();
+        stream.write_all(content.as_bytes()).unwrap();
     }
 }
 

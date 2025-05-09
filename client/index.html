@@ -8,47 +8,87 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Top Menu -->
-    <div class="menu">
-        <div class="menu-item">
-            <label>Speed:</label>
-            <input type="range" min="0" max="100" value="50" id="slider1">
-            <span id="slider1-value" class="slider-value">50</span>
-        </div>
-        <div class="menu-item">
-            <label>Volume:</label>
-            <input type="range" min="0" max="100" value="50" id="slider2">
-            <span id="slider2-value" class="slider-value">50</span>
-        </div>
-        <div class="menu-item">
-            <label>Brightness:</label>
-            <input type="range" min="0" max="100" value="50" id="slider3">
-            <span id="slider3-value" class="slider-value">50</span>
+    <div class="main">
+        <!-- Table Section -->
+        <table id="forecastTable">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Cumulative Outflow</th>
+                    <th>Cumulative Inflow</th>
+                    <th>Outflow with Inflation</th>
+                    <th>Cumulative with Inflation</th>
+                    <th>Net Flow</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <!-- Top Menu -->
+        <div class="menu">
+
+            <div class="menu-item">
+                <div class="label">
+                    <label>Outflow:</label>
+                    <input type="range" min="0" max="10000" value="2000" step="100" id="slider1">
+                </div>
+
+                <span id="slider1-value" class="slider-value">50</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="label">
+                    <label>Inflow:</label>
+                    <input type="range" min="0" max="100000" value="40000" step="500" id="slider2">
+                </div>
+
+                <span id="slider2-value" class="slider-value">50</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="label">
+                    <label>Range:</label>
+                    <input type="range" min="0" max="15" value="10" id="slider3">
+                </div>
+
+                <span id="slider3-value" class="slider-value">50</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="label">
+                    <label>Inflation:</label>
+                    <input type="range" min="0" max="0.25" value="0.05" step="0.001" id="slider4">
+                </div>
+
+                <span id="slider4-value" class="slider-value">50</span>
+            </div>
+
+            <div class="menu-item">
+                <div class="label">
+                    <label>Offset:</label>
+                    <input type="range" min="0" max="10" value="5" id="slider5">
+                </div>
+
+                <span id="slider5-value" class="slider-value">50</span>
+            </div>
+
+            <div class="send">
+                <button id="btn">Request Forecast</button>
+            </div>
+
+            <div class="results">
+                <div class="result-item">
+                    <label>Yearly Outflow:</label>
+                    <span id="outflow-year">-</span>
+                </div>
+                <div class="result-item">
+                    <label>Yearly Inflow:</label>
+                    <span id="inflow-year">-</span>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Table Section -->
-    <table>
-        <thead>
-            <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1, Cell 1</td>
-                <td>Row 1, Cell 2</td>
-                <td>Row 1, Cell 3</td>
-            </tr>
-            <tr>
-                <td>Row 2, Cell 1</td>
-                <td>Row 2, Cell 2</td>
-                <td>Row 2, Cell 3</td>
-            </tr>
-        </tbody>
-    </table>
     <script src="scripts.js"></script>
 </body>
 </html>
