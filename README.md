@@ -34,8 +34,8 @@ A web application for calculating long-term financial forecasts with inflation a
 
 ### Notes
 
-Front-end: Almost everything AI
-Back-end: A little bit of AI
-README: Almost everything AI
+- Front-end: Almost everything AI
+- Back-end: A little bit of AI
+- README: Almost everything AI
 
 motivation: Just some experiments
