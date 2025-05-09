@@ -89,8 +89,8 @@ impl Forecast {
         let out_inf = &mut self.outflow_inflation;
 
         for i in 1..=self.input.range as usize {
-            let rate = (1.0 + self.input.inflation_rate).powf(i as f64) - 1.0;
-            let curr = self.outflow_year / (1.0 - rate);
+            let rate = (1.0 + self.input.inflation_rate).powf(i as f64);
+            let curr = self.outflow_year * rate;
 
             out_inf.push(curr);
         }
