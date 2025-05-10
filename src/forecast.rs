@@ -87,10 +87,10 @@ impl Forecast {
 
     fn set_outflow_inflation(&mut self) {
         let out_inf = &mut self.outflow_inflation;
+        let mut curr = self.outflow_year;
 
-        for i in 1..=self.input.range as usize {
-            let rate = (1.0 + self.input.inflation_rate).powf(i as f64);
-            let curr = self.outflow_year * rate;
+        for _ in 0..self.input.range as usize {
+            curr *= 1.0 + self.input.inflation_rate;
 
             out_inf.push(curr);
         }
