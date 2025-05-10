@@ -1,9 +1,9 @@
 function updateSliderValue(sliderId) {
     const slider = document.getElementById(sliderId);
     const output = document.getElementById(sliderId + '-value');
-    
+
     const formatValue = (id, value) => {
-        switch(id) {
+        switch (id) {
             case 'slider1':
             case 'slider2':
                 return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -13,10 +13,10 @@ function updateSliderValue(sliderId) {
                 return value;
         }
     };
-    
+
     output.textContent = formatValue(sliderId, parseFloat(slider.value));
-    
-    slider.oninput = async function() {
+
+    slider.oninput = async function () {
         output.textContent = formatValue(sliderId, parseFloat(this.value));
     }
 }
@@ -31,20 +31,18 @@ function requestForecast(buttonId) {
         const inflation = document.getElementById('slider4').value;
         const offset = document.getElementById('slider5').value;
 
-        const url = "/api/forecast";
+        const params = new URLSearchParams({
+            outflow: parseFloat(outflow),
+            inflow: parseFloat(inflow),
+            range: parseInt(range),
+            inflation_rate: parseFloat(inflation),
+            inflow_offset: parseInt(offset),
+        });
+
+        const url = `/api/forecast?${params}`;
         try {
             const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    outflow: parseFloat(outflow),
-                    inflow: parseFloat(inflow),
-                    range: parseInt(range),
-                    inflation_rate: parseFloat(inflation),
-                    inflow_offset: parseInt(offset),
-                })
+                method: "GET",
             });
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
@@ -60,7 +58,7 @@ function requestForecast(buttonId) {
 
 function updateResults(data) {
     const formatBRL = (value) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    
+
     // Update summary fields
     document.getElementById('outflow-year').textContent = formatBRL(data.outflow_year);
     document.getElementById('inflow-year').textContent = formatBRL(data.inflow_year);
