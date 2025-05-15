@@ -1,13 +1,13 @@
 # Budget Forecast Calculator
 
 A web application for calculating long-term financial forecasts with inflation adjustments.
-devlopment-server: http://34.229.163.145:8000/
+devlopment-server: http://34.229.163.145
 
 AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
 
 Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023 AMI 64-bit(Arm), 8 GiB gp3.
 
-So far I have not implemented any security strategies, so please be kind.
+So far I have not implemented as many security strategies, so please be gentle.
 
 ## Features
 
