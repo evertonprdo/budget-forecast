@@ -5,7 +5,8 @@ devlopment-server: http://34.229.163.145:8000/
 
 AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
 
-Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023
+Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023.
+
 So far I have not implemented any security strategies, so please be kind.
 
 ## Features
