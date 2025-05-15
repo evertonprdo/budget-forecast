@@ -9,7 +9,7 @@ use rocket::{fs::FileServer, serde::json::Json};
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", FileServer::from("www/static"))
+        .mount("/", FileServer::from("static"))
         .mount("/api", routes![get_forecast])
 }
 

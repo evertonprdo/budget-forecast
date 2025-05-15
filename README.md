@@ -1,6 +1,12 @@
 # Budget Forecast Calculator
 
 A web application for calculating long-term financial forecasts with inflation adjustments.
+devlopment-server: http://34.229.163.145:8000/
+
+AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
+
+Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023
+So far I have not implemented any security strategies, so please be kind.
 
 ## Features
 
@@ -20,22 +26,14 @@ A web application for calculating long-term financial forecasts with inflation a
 ## Technical Stack
 
 - Frontend: Vanilla JavaScript, CSS3
-- Backend: Rust HTTP Server (no external crates)
-  - Custom thread pool implementation
-  - JSON parsing and generation
+- Backend: Rust Rocket HTTP server
+  - serde: JSON parsing and generation
   - Static file serving
-
-## Architecture
-
-- Modular backend with separation of concerns
-- Responsive single-page frontend
-- RESTful API for forecast calculations
-- Thread pool for handling concurrent requests
 
 ### Notes
 
 - Front-end: Almost everything AI
-- Back-end: A little bit of AI
+- Back-end: Rocket
 - README: Almost everything AI
 
 motivation: Just some experiments
