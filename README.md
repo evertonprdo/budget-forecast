@@ -1,13 +1,12 @@
 # Budget Forecast Calculator
 
-A web application for calculating long-term financial forecasts with inflation adjustments.
-devlopment-server: https://evertonprdo.dev
-
-AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
+A web application for calculating long-term financial forecasts with inflation adjustments
 
 Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023 AMI 64-bit(Arm), 8 GiB gp3.
 
-So far I have not implemented as many security strategies, so please be gentle.
+link: https://evertonprdo.dev
+
+AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
 
 ## Features
 
@@ -37,4 +36,4 @@ So far I have not implemented as many security strategies, so please be gentle.
 - Back-end: Rocket
 - README: Almost everything AI
 
-motivation: Just some experiments
+**Motivation**: I was curious to see how Rust would perform in a low-memory environment. Sure, the server doesn’t do much, but I can still gather some metrics on baseline memory usage and draw a few insights.
