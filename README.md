@@ -1,7 +1,7 @@
 # Budget Forecast Calculator
 
 A web application for calculating long-term financial forecasts with inflation adjustments.
-devlopment-server: http://34.229.163.145
+devlopment-server: https://evertonprdo.dev
 
 AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
 
