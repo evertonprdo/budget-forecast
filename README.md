@@ -2,9 +2,9 @@
 
 A web application for calculating long-term financial forecasts with inflation adjustments
 
-Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023 AMI 64-bit(Arm), 8 GiB gp3.
+Server: Amazon EC2, t4g.nano, us-east-1c, Amazon Linux 2023 AMI 64-bit(Arm), 8 GiB gp3. And I'm using Nginx for some basic security and redirect handling.
 
-link: https://evertonprdo.dev
+Link: https://evertonprdo.dev
 
 AI Assistance: https://www.linkedin.com/feed/update/urn:li:activity:7328787266158407681/
 
